@@ -54,12 +54,6 @@ else
     } | tee ./config/database.php
   fi
 fi
-
-{
-      echo "<?php"
-      echo "phpinfo();"
-      echo "?>"
-} | tee ./phpinfo.php	 
 	  
 if [ -f "$APACHE_ENVVARS" ]; then
   #=== Enable htaccess for search engine optimisations ===
