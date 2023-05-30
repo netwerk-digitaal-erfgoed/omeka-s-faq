@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="{{ metaLanguage }}">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>{{ title }}</title>
+    <base href="{{ baseHref }}" />
+    <meta content="{{ metaDescription }}" name="description" />
+    <meta content="{{ metaKeywords }}" name="keywords" />
+    <meta content="{{ metaPublisher }}" name="author" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="phpMyFAQ {{ phpmyfaqVersion }}" name="application-name" />
+    <meta content="{{ metaRobots }}" name="robots" />
+    <meta content="7 days" name="revisit-after" />
+    <meta property="og:site_name" content="{{ title }}">
+    <meta property="og:image" content="{{ baseHref }}assets/themes/{{ tplSetName }}/img/omeka-s-faq.png">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="400">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:url" content="{{ baseHref }}">
+    <meta property="og:description" content="{{ metaDescription }}">
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:image:src" content="{{ baseHref }}assets/themes/{{ tplSetName }}/img/logo_180x180.jpeg">
+    <meta property="twitter:title" content="{{ title }}">
+    <meta property="twitter:description" content="{{ metaDescription }}">
+    <link href="{{ baseHref }}assets/dist/styles.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="{{ baseHref }}assets/themes/{{ tplSetName }}/img/logo_32x32.png">
+    <link rel="apple-touch-icon" type="image/png" href="{{ baseHref }}assets/themes/{{ tplSetName }}/img/logo_180x180.jpeg">
+    <link href="{{ currentPageUrl }}" rel="canonical" />
+  </head>
+  <body dir="{{ dir }}">
+    <nav class="p-3 text-bg-dark border-bottom shadow ">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a
+            href="{{ faqHome }}"
+            id="phpmyfaq-logo"
+            title="{{ header }}"
+            class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"
+          >
+            <img width="174" height="114" alt="phpMyFAQ" src="{{ baseHref }}assets/themes/{{ tplSetName }}/img/logo.png" /> <h1 style="color:var(--bs-white)!important">Omeka S FAQ</h1>
+          </a>
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+<!-- 
+            <li class="nav-link px-2 text-white {{ activeAllCategories }}">{{ allCategories }}</li>
+            <li class="nav-link px-2 text-white {{ activeAddContent }}">{{ msgAddContent }}</li>
+            <li class="nav-link px-2 text-white {{ activeAddQuestion }}">{{ msgQuestion }}</li>
+            <li class="nav-link px-2 text-white {{ activeOpenQuestions }}">{{ msgOpenQuestions }}</li>
+ -->
+          </ul>
+          <div class="dropdown text-end">
+            <a
+              href="#"
+              class="d-block text-decoration-none dropdown-toggle text-white"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              {{ msgLoginUser }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small">
+              <li><a class="dropdown-item" href="/index.php?action=glossary">Verklarende woordenlijst</a></li>
+              <li><a class="dropdown-item" href="/overview.html">FAQ Overzicht</a></li>
+              [notLoggedIn]
+              <li>{{ msgRegisterUser }}</li>
+              <li>{{ msgLoginUser }}</li>
+              [/notLoggedIn] [userloggedIn]
+              <li>{{ msgUserControlDropDown }}</li>
+              <li>{{ msgUserControl }}</li>
+              <li>{{ msgUserRemoval }}</li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>{{ msgLogoutUser }}</li>
+              [/userloggedIn]
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- SEARCH -->
+    <div class="container my-5">
+      <div class="row height d-flex justify-content-center align-items-center">
+        <div class="col-md-8">
+          <div class="search">
+            <form action="{{ formActionUrl }}" id="search" method="post" role="search">
+              <i class="fa fa-search"></i>
+              <input
+                autocomplete="off"
+                type="text"
+                class="form-control form-control-lg"
+                id="pmf-search-autocomplete"
+                name="search"
+                placeholder="Typ een aspect in waar je meer over wilt weten..."
+                value="{{ searchTerm }}"
+              />
+              <button type="submit" class="btn btn-primary btn-lg">{{ searchBox }}</button>
+            </form>
+          </div>
+          <div>
+            <small class="form-text pull-right text-muted">
+              <a class="help" href="?action=search">{{ msgAdvancedSearch }}</a>
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BREADCRUMB -->
+    [breadcrumb]
+    <section class="pmf-breadcrumbs">
+      <div class="container">{{ breadcrumbHeadline }}</div>
+    </section>
+    [/breadcrumb]
+
+    <!-- MAIN CONTENT -->
+    <section class="my-5" id="wrapper">
+      <div class="container">{{ mainPageContent }} {{ sidebar }}</div>
+    </section>
+
+    <footer class="py-3 px-5 text-bg-dark shadow">
+      <p class="m-0">Deze website is een initiatief vanuit de Nederlandstalige community van Omeka S geïnteresseerden.
+      De website staat los van het Digital Scholar project <a href="https://omeka.org/">Omeka</a>.
+      De inhoud van deze website is beschikbaar op basis van een <a href="https://creativecommons.org/licenses/by-nc/4.0/legalcode" rel="license">CC-BY-NC licentie</a>.</p>
+        <!--
+
+
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 mb-md-0 mb-4">
+            <h5 class="footer-heading">{{ writeTagCloudHeader }}</h5>
+            <p class="card-text pmf-tag-cloud">{{ writeTags }}</p>
+          </div>
+          <div class="col-md-4 mb-md-0 mb-4">
+            <h5 class="footer-heading">{{ languageBox }}</h5>
+            <form accept-charset="utf-8" action="{{ renderUri }}" method="post" class="subscribe-form">
+              <div class="form-group d-flex">
+                {{ switchLanguages }}
+                <input name="action" type="hidden" value="" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="w-100">
+        <div class="container">
+          <div class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <p class="col-md-6 mb-0 text-white">{{ copyright }}</p>
+
+            <ul class="nav col-md-6 justify-content-end">
+              <li class="nav-item">{{ faqOverview }}</li>
+              <li class="nav-item">{{ showSitemap }}</li>
+              <li class="nav-item">{{ msgGlossary }}</li>
+              <li class="nav-item">{{ msgContact }}</li>
+              <li class="nav-item">{{ privacyLink }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      [debugMode]
+      <div class="container">
+        <h5 class="border-top">⚠︎ DEBUG MODE ENABLED ⚠︎</h5>
+        <div class="row">
+          <div class="col-12">
+            <h6 class="text-danger">DATABASE QUERIES</h6>
+            {{ debugQueries }}
+          </div>
+        </div>
+      </div>
+      [/debugMode]
+    -->
+  </footer>
+  <script src="./assets/dist/frontend.js"></script>
+  </body>
+</html>

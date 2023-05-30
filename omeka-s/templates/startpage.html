@@ -1,0 +1,165 @@
+<div class="card shadow-lg" style="border-color:white;background-color:var(--bs-success-bg-subtle);margin-top:-2em;">
+  <div class="card-body p-4">
+    <h4 class=" text-center">Omeka S is een semantisch collectieregistratie en webpublicatieplatform  voor instellingen die geïnteresseerd zijn in het verbinden van digitale culturele erfgoedcollecties met andere online bronnen.</h4>
+  </div>
+</div>
+<p><br><br></p>
+
+<!-- Header -->
+<div class="row">
+  <div class="col-12">
+    <h1 class="text-center" style="margin: -0.5em 0 0.5em 0">{{ pageHeader }}</h1>
+  </div>
+</div>
+
+<!-- Start page -->
+<div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-4">
+  [startPageCategories] {{ startPageCategoryDecks }} [/startPageCategories]
+</div>
+
+<!-- Start page content -->
+<div class="row masonry-grid">
+  <!-- Sticky FAQs -->
+  <div class="col-sm-6 col-lg-4 mb-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title text-center">{{ stickyRecordsHeader }}</h5>
+      </div>
+      <div class="card-body">
+        <ul>
+          [stickyRecordsList]
+          <li class="mb-3">
+            <a
+              class="sticky-faqs"
+              href="{{ stickyUrl }}"
+            >
+              {{ stickyPreview }}
+            </a>
+          </li>
+          [/stickyRecordsList]
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top FAQs -->
+  <div class="col-sm-6 col-lg-4 mb-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title text-center">{{ writeTopTenHeader }}</h5>
+      </div>
+      <div class="card-body">
+        <ul>
+          [toptenList]
+          <li class="mb-3">
+            <a
+              class="topten"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="{{ toptenVisits }}"
+              href="{{ toptenUrl }}"
+              >{{ toptenTitle }}</a
+            >
+          </li>
+          [/toptenList] [toptenListError]
+          <li>{{ errorMsgTopTen }}</li>
+          [/toptenListError]
+        </ul>
+        <p class="card-text">
+          <small class="text-muted">{{ writeNumberOfArticles }}</small>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Latest FAQs -->
+  <div class="col-sm-6 col-lg-4 mb-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title text-center">{{ writeNewestHeader }}</h5>
+      </div>
+      <div class="card-body"> 
+        <ul>
+          [latestEntriesList]
+          <li class="mb-3">
+            <a
+              class="latest-entries"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="toegevoegd op {{ latestEntriesDate }}"
+              href="{{ latestEntriesUrl }}"
+              >{{ latestEntriesTitle }}</a
+            >
+          </li>
+          [/latestEntriesList] [latestEntriesListError]
+          <li>{{ errorMsgLatest }}</li>
+          [/latestEntriesListError]
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- News -->
+  <div class="col-sm-6 col-lg-4 mb-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title text-center">{{ writeNewsHeader }}</h5>
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{ writeNews }}</p>
+        <p class="card-text">
+          <small class="text-muted">{{ showAllNews }}</small>
+        </p>
+      </div>
+    </div>
+  </div>
+
+    <!-- Add question -->
+    <div class="col-sm-6 col-lg-4 mb-4">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title text-center">Help mee</h5>
+        </div>
+        <div class="card-body" style="background-color: var(--bs-success-bg-subtle);">
+          <p class="card-text">Welke vragen heb jij die nog onbeantwoord zijn?</p>
+          <p><br></p>
+            <a class="btn btnl btn-primary" href="/addcontent.html">Vraag toevoegen</a>
+          
+        </div>
+      </div>
+    </div>
+
+  <!-- Tag Cloud 
+  [tagListSection]
+  <div class="col-sm-6 col-lg-4 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ msgTags }}</h5>
+        <p class="card-text pmf-tag-cloud">{{ tagList }}</p>
+      </div>
+    </div>
+  </div>
+  [/tagListSection]
+  -->
+
+  <!-- News -->
+  <div class="col-sm-6 col-lg-4 mb-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title text-center">Omeka S links</h5>
+      </div>
+      <div class="card-body">
+        <ul class="card-text">
+          <li class="mb-3"><a target="_blank" title="Onderwijstips van de Universiteit Ghent" href="https://onderwijstips.ugent.be/nl/tips/omeka-s-werken-aan-digitale-geletterdheid-virtuele/">Omeka S: werken aan digitale geletterdheid via virtuele exposities</a></li>
+		  <li class="mb-3"><a target="_blank" href="https://forum.omeka.org/">Omeka forums</a></li>
+          <li class="mb-3"><a target="_blank" href="https://omeka.org/s/docs/user-manual/">Omeka S user manual</a></li>
+          <li class="mb-3"><a target="_blank" href="https://omeka.org/s/modules/">Omeka S modules</a></li>
+          <li class="mb-3"><a target="_blank" href="https://omeka.org/s/directory/">Omeka S site directory</a></li>
+          <li class="mb-3"><a target="_blank" href="https://github.com/omeka/omeka-s">Omeka S Github repository</a></li>
+		  
+		  
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

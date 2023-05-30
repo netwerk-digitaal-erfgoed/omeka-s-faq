@@ -1,0 +1,174 @@
+/**
+ * phpMyFAQ 3.2 default layout
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public License,
+ * v. 2.0. If a copy of the MPL was not distributed with this file, You can
+ * obtain one at https://mozilla.org/MPL/2.0/.
+ *
+ * @package   phpMyFAQ
+ * @author    Thorsten Rinne <thorsten@phpmyfaq.de>
+ * @copyright 2010-2023 phpMyFAQ Team
+ * @license   https://www.mozilla.org/MPL/2.0/ Mozilla Public License Version 2.0
+ * @link      https://www.phpmyfaq.de
+ * @since     2010-01-17
+ */
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+
+// Import Theme
+@import 'theme';
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+// Import Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Import global styles
+@import 'global';
+
+// Fork Awesome
+$fa-font-path: '~fork-awesome/fonts';
+@import '~fork-awesome/scss/fork-awesome';
+
+// Cookie Consent
+@import 'vanilla-cookieconsent/dist/cookieconsent.css';
+
+// Layouts
+@import 'layout/autocomplete';
+@import 'layout/faq';
+@import 'layout/login';
+@import 'layout/setup';
+
+a { 
+    color:var(--bs-dark-text); 
+}
+
+#phpmyfaq-logo img {    
+    margin-right: 2em;
+    zoom: 0.5; 
+}
+footer p a { color: white }
+.text-bg-dark { background-color: #535e6f!important;}
+
+.nav .nav-link {
+    color: whitesmoke;
+    font-weight: 600;
+ }
+ 
+ .text-muted a { color: #535e6f; font-weight: 600;} 
+ .pmf-category-overview {line-height:2em}
+
+ body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  footer {
+    margin-top: auto;
+  }
+  .breadcrumb-item {
+    background-color: var(--bs-primary);
+    padding: 5px 13px;
+    border-radius: 7px;
+  }
+  .breadcrumb-item a { 
+    color:var(--bs-white);
+    text-decoration: none;
+  }
+
+  .initialism {
+    font-size: 1em;
+    text-transform: unset;
+    border-bottom: 1px dotted var(--bs-primary);
+  }
+
+.tooltip {
+    opacity: 1!important;
+    font-size: 1em!important;
+}
+.tooltip-inner {
+    padding: 6px 12px!important;
+    background-color:var(--bs-success-bg-subtle);
+    color: var(--bs-black);
+    //box-shadow: 0px 0px 4px black;
+    max-width:400px!important;
+} 
+
+.tooltip.bs-tooltip-right .tooltip-arrow::before {
+    border-right-color: var(--bs-success-bg-subtle) !important;
+}
+.tooltip.bs-tooltip-left .tooltip-arrow::before {
+    border-left-color: var(--bs-success-bg-subtle) !important;
+}
+.tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+    border-bottom-color: var(--bs-success-bg-subtle) !important;
+}
+.tooltip.bs-tooltip-top .tooltip-arrow::before {
+    border-top-color: var(--bs-success-bg-subtle) !important;
+}
+
+article li {
+    padding: 5px;
+} 
+
+.list-group-item-info, .autocomplete > li:hover, .autocomplete > li.selected {
+    --bs-list-group-color: var(--bs-black);
+    --bs-list-group-bg: var(--bs-success-bg-subtle);
+    --bs-list-group-border-color: var(--bs-list-group-border-color);
+}
+
+section img {
+    box-shadow: 0 0 10px 0 #535e6f;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+.overviewcat {
+    background-color: var(--bs-primary);
+    color: var(--bs-white);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 1em;
+}
+
+label {
+    color: #535e6f;
+    font-weight: 600;
+    text-align: right;
+}
+
+.btnl {
+    bottom: 0;
+    position: absolute; 
+    left: -1px;
+    border-radius: 0 var(--bs-border-radius);
+    padding: 10px 20px;
+}
+
+.card ul {
+    padding-left: 0!important;
+    margin-left:3px;
+  }
+
+.card ul li::marker {
+    color: #535e6f;
+    content: "◈"; 
+}
+  
+.page-link.active, .active > .page-link {
+    z-index: 3;
+    color: var(--bs-white);
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+.page-link {
+    color: var(--bs-primary);
+}
+
+.pmf-voting-star.selected  {
+    color: var(--bs-primary);
+}

@@ -1,0 +1,41 @@
+version: "2.3"
+
+services:
+  mariadb:
+    image: mariadb:10.2.14
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=iop
+      - MYSQL_DATABASE=phpmyfaq
+      - MYSQL_USER=phpmyfaq
+      - MYSQL_PASSWORD=phpmyfaq
+    volumes:
+      - ./volumes/mariadb:/var/lib/mysql
+  phpmyfaq:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    stdin_open: true
+    environment:
+      - PMF_DB_HOST=db
+      - PMF_DB_NAME=phpmyfaq
+      - PMF_DB_USER=phpmyfaq
+      - PMF_DB_PASS=phpmyfaq
+      - PMF_DISABLE_HTACCESS=""
+      - PMF_TIMEZONE="Europe/Berlin"
+      - PMF_ENABLE_UPLOADS="On"
+      - PMF_MEMORY_LIMIT="64M"
+      - PHP_LOG_ERRORS="On"
+      - PHP_ERROR_REPORTING="E_ALL" # Production Value: E_ALL & ~E_DEPRECATED & ~E_STRICT
+      - PHP_POST_MAX_SIZE="64M"
+      - PHP_UPLOAD_MAX_FILESIZE="64M"
+    links:
+      - mariadb:db
+    ports:
+      - "85:80"
+    volumes:
+      - ./volumes/phpmyfaq/attachments:/var/www/html/attachments
+      - ./volumes/phpmyfaq/data:/var/www/html/data
+      - ./volumes/phpmyfaq/images:/var/www/html/images
+      - ./volumes/phpmyfaq/config:/var/www/html/config
