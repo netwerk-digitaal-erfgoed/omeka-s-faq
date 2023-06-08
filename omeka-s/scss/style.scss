@@ -140,12 +140,17 @@ label {
     text-align: right;
 }
 
-.btnl {
+.pb-5 + .btn {
     bottom: 0;
     position: absolute; 
     left: -1px;
     border-radius: 0 var(--bs-border-radius);
     padding: 10px 20px;
+}
+
+.card h3 {
+    margin: auto;
+    padding: 0 0 2rem 0!important;
 }
 
 .card ul {
