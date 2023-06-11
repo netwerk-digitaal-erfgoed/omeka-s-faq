@@ -150,6 +150,20 @@ RUN set -x \
       -e "s~define\('DEBUG', true\);~define\('DEBUG', false\);~" \
  && mv ./config ../saved-config
 
+#=== temp NL language fixes
+# to be tackled via https://github.com/thorsten/phpMyFAQ/commit/4780fb8d5c85d06016cf85f1b7706469d4d9b4de
+# via https://github.com/thorsten/phpMyFAQ/pull/2494
+RUN set -x \
+ && sed -ri ./lang/language_nl.php \
+      -e "s~'verwante artikelen~Verwante artikelen~" \
+ && sed -ri ./lang/language_nl.php \
+      -e "s~return $PMF_LANG~$PMF_LANG\['msgGoToCategory'\] = 'Ga naar categorie';\n\nreturn $PMF_LANG~"
+
+#=== disable cookie-consent, because no tracking
+RUN set -x \
+ && sed -ri ./assets/src/frontend.js \
+      -e "s~import './utils/cookie-consent~// import './utils/cookie-consent~"
+
 #=== Set custom entrypoint ===
 COPY docker-entrypoint.sh /entrypoint
 RUN chmod +x /entrypoint
