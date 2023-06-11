@@ -160,7 +160,7 @@ RUN set -x \
 # via https://github.com/thorsten/phpMyFAQ/pull/2494
 RUN set -x \
  && sed -ri ./lang/language_nl.php \
-      -e "s~'verwante artikelen~Verwante artikelen~" 
+      -e "s~'verwante artikelen~Verwante artikelen~" \
  && sed -ri ./lang/language_nl.php \
       -e "s~return $PMF_LANG~\$PMF_LANG\['msgGoToCategory'\] = 'Ga naar categorie';\n\nreturn $PMF_LANG~"
 
