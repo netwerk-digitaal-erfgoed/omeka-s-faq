@@ -48,7 +48,7 @@ COPY --from=composer /app /app
 
 #=== disable cookie-consent, because no tracking
 RUN set -x \
- && sed -ri ./assets/src/frontend.js \
+ && sed -ri phpmyfaq/assets/src/frontend.js \
       -e "s~import './utils/cookie-consent~// import './utils/cookie-consent~"
 
 RUN yarn install --production 
