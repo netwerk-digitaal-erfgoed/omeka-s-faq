@@ -45,7 +45,12 @@ WORKDIR /app
 RUN apk add --no-cache python3 make g++
 
 COPY --from=composer /app /app
-   
+
+#=== disable cookie-consent, because no tracking
+RUN set -x \
+ && sed -ri ./assets/src/frontend.js \
+      -e "s~import './utils/cookie-consent~// import './utils/cookie-consent~"
+
 RUN yarn install --production 
 RUN yarn add webpack 
 RUN yarn build
@@ -156,14 +161,8 @@ RUN set -x \
 RUN set -x \
  && sed -ri ./lang/language_nl.php \
       -e "s~'verwante artikelen~Verwante artikelen~" 
-# seems to break something
-# && sed -ri ./lang/language_nl.php \
-#      -e "s~return $PMF_LANG~$PMF_LANG\['msgGoToCategory'\] = 'Ga naar categorie';\n\nreturn $PMF_LANG~"
-
-#=== disable cookie-consent, because no tracking
-RUN set -x \
- && sed -ri ./assets/src/frontend.js \
-      -e "s~import './utils/cookie-consent~// import './utils/cookie-consent~"
+ && sed -ri ./lang/language_nl.php \
+      -e "s~return $PMF_LANG~\$PMF_LANG\['msgGoToCategory'\] = 'Ga naar categorie';\n\nreturn $PMF_LANG~"
 
 #=== Set custom entrypoint ===
 COPY docker-entrypoint.sh /entrypoint
