@@ -168,7 +168,7 @@ RUN set -x \
  && sed -ri ./src/phpMyFAQ/Helper/SearchHelper.php \
       -e "s~<li><i class=.fa fa-question-circle.></i>~<li>~" \
  && sed -ri ./index.php \
-      -e "s~title = ' - ' . System::getPoweredByString()~title = ''~"
+      -e "s~title = ' - ' . System::getPoweredByString..~title = ''~"
 
 #=== Set custom entrypoint ===
 COPY docker-entrypoint.sh /entrypoint
