@@ -164,7 +164,7 @@ RUN set -x \
  && sed -ri ./lang/language_nl.php \
       -e "s~return $PMF_LANG~\$PMF_LANG\['msgGoToCategory'\] = 'Ga naar categorie';\n\nreturn $PMF_LANG~" \
  && sed -ri ./src/phpMyFAQ/Faq.php \
-      -e "s~Utils::makeShorterText..row..question.., 8.~$row['question']~"
+      -e "s~Utils::makeShorterText..row..question.., 8.~\$row['question']~"
 
 #=== Set custom entrypoint ===
 COPY docker-entrypoint.sh /entrypoint
