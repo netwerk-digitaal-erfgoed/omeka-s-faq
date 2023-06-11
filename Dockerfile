@@ -157,14 +157,16 @@ RUN set -x \
 
 #=== temp NL language fixes
 # to be tackled via https://github.com/thorsten/phpMyFAQ/commit/4780fb8d5c85d06016cf85f1b7706469d4d9b4de
-# via https://github.com/thorsten/phpMyFAQ/pull/2494
+# via https://github.com/thorsten/phpMyFAQ/pull/2494 plus some presentation patches
 RUN set -x \
  && sed -ri ./lang/language_nl.php \
       -e "s~'verwante artikelen~Verwante artikelen~" \
  && sed -ri ./lang/language_nl.php \
       -e "s~return $PMF_LANG~\$PMF_LANG\['msgGoToCategory'\] = 'Ga naar categorie';\n\nreturn $PMF_LANG~" \
  && sed -ri ./src/phpMyFAQ/Faq.php \
-      -e "s~Utils::makeShorterText..row..question.., 8.~\$row['question']~"
+      -e "s~Utils::makeShorterText..row..question.., 8.~\$row['question']~" \
+ && sed -ri ./src/phpMyFAQ/Helper/SearchHelper.php \
+      -e "s~<li><i class=.fa fa-question-circle.></i>~<li>~"
 
 #=== Set custom entrypoint ===
 COPY docker-entrypoint.sh /entrypoint
