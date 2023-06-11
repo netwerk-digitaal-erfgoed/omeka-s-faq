@@ -155,9 +155,10 @@ RUN set -x \
 # via https://github.com/thorsten/phpMyFAQ/pull/2494
 RUN set -x \
  && sed -ri ./lang/language_nl.php \
-      -e "s~'verwante artikelen~Verwante artikelen~" \
- && sed -ri ./lang/language_nl.php \
-      -e "s~return $PMF_LANG~$PMF_LANG\['msgGoToCategory'\] = 'Ga naar categorie';\n\nreturn $PMF_LANG~"
+      -e "s~'verwante artikelen~Verwante artikelen~" 
+# seems to break something
+# && sed -ri ./lang/language_nl.php \
+#      -e "s~return $PMF_LANG~$PMF_LANG\['msgGoToCategory'\] = 'Ga naar categorie';\n\nreturn $PMF_LANG~"
 
 #=== disable cookie-consent, because no tracking
 RUN set -x \
