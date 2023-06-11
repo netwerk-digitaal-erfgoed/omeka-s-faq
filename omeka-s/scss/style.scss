@@ -140,7 +140,7 @@ label {
     text-align: right;
 }
 
-.pb-5 + .btn {
+.btnl, .pt-5 + .btn {
     bottom: 0;
     position: absolute; 
     left: -1px;
