@@ -1,0 +1,6 @@
+User-agent: *
+# Every search runs a database query; crawlers find the answers through the sitemap.
+Disallow: /*action=search
+Disallow: /admin/
+
+Sitemap: https://omeka-s-faq.netwerkdigitaalerfgoed.nl/sitemap.xml
