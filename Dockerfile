@@ -109,20 +109,13 @@ RUN set -x \
 # && apt-get purge -y ${buildDeps} \
 # && rm -rf /var/lib/apt/lists/*
 
-#=== Apache vhost ===
-RUN { \
-  echo '<VirtualHost *:80>'; \
-  echo 'DocumentRoot /var/www/html'; \
-  echo; \
-  echo '<Directory /var/www/html>'; \
-  echo '\tOptions -Indexes'; \
-  echo '\tAllowOverride all'; \
-  echo '</Directory>'; \
-  echo '</VirtualHost>'; \
- } | tee "$APACHE_CONFDIR/sites-available/app.conf" \
- && set -x \
+#=== Apache vhost and workers ===
+COPY apache/app.conf $APACHE_CONFDIR/sites-available/app.conf
+COPY apache/workers.conf $APACHE_CONFDIR/conf-available/workers.conf
+RUN set -x \
  && a2ensite app \
  && a2dissite 000-default \
+ && a2enconf workers \
  && echo "ServerName localhost" >> $APACHE_CONFDIR/apache2.conf
 
 #=== Apache security ===
@@ -148,6 +141,7 @@ ENV PMF_TIMEZONE="Europe/Berlin" \
 
 #=== Add source code from previously built interstage ===
 COPY --from=builder /app/phpmyfaq .
+COPY robots.txt .
 
 #=== Ensure debug mode is disabled and do some other stuff over the code ===
 RUN set -x \
