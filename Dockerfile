@@ -58,7 +58,7 @@ RUN yarn build
 #################################
 #=== Final stage with payload ===
 #################################
-FROM php:8.1-apache
+FROM php:8.3.36-apache
 
 #=== Install gd php dependencie ===
 RUN set -x \
